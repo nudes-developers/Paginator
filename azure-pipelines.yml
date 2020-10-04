@@ -1,0 +1,45 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  sdkVersion: '3.1.100'
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Install .Net Core 3.1 SDK'
+  inputs:
+    packageType: sdk
+    version: $(sdkVersion)
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build Solution'
+  inputs:
+    command: 'build'
+    projects: src/**/*.csproj
+    arguments: '--configuration $(buildConfiguration) /p:Version=1.0.$(Build.BuildId) /p:AssemblyVersion=1.0.$(Build.BuildId)'
+    feedsToUse: 'select'
+
+- task: CopyFiles@2
+  displayName: 'Copy packages'
+  inputs:
+    Contents: '**/*.nupkg'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    flattenFolders: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish artifacts'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: Container
