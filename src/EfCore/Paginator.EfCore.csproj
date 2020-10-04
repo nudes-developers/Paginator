@@ -11,6 +11,7 @@
     <PackageProjectUrl>https://github.com/nudes-senaisp/Paginator</PackageProjectUrl>
     <RepositoryUrl>https://github.com/nudes-senaisp/Paginator</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
