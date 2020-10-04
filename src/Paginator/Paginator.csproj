@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Nudes.Paginator</RootNamespace>
+    <AssemblyName>Nudes.Paginator</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Paginator.Core.csproj" />
+    <ProjectReference Include="..\EfCore\Paginator.EfCore.csproj" />
+    <ProjectReference Include="..\FluentValidation\Paginator.FluentValidation.csproj" />
+  </ItemGroup>
+
+</Project>
