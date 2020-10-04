@@ -34,10 +34,14 @@ namespace Nudes.Paginator.Core
             Pagination = pagination;
         }
 
-        public PageResult(PaginationData pagination, IEnumerable<T> items)
+        public PageResult(PaginationData pagination, IEnumerable<T> items) : this(pagination)
         {
-            Pagination = pagination;
             Items = new List<T>(items);
+        }
+
+        public PageResult(PageRequest request, long total, IEnumerable<T> items) : this(new PaginationData(request, total), items)
+        {
+            /*as is*/
         }
     }
 }

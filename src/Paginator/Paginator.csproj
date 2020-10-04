@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Paginator.Core.csproj" />
-    <ProjectReference Include="..\EfCore\Paginator.EfCore.csproj" />
     <ProjectReference Include="..\FluentValidation\Paginator.FluentValidation.csproj" />
   </ItemGroup>
 

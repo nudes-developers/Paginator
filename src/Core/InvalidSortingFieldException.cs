@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Nudes.Paginator.EfCore
+namespace Nudes.Paginator.Core
 {
     public class InvalidSortingFieldException : Exception
     {
