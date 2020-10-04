@@ -4,12 +4,27 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Nudes.Paginator</RootNamespace>
     <AssemblyName>Nudes.Paginator</AssemblyName>
+    <Authors>Patrick Ens</Authors>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/nudes-senaisp/Paginator</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nudes-senaisp/Paginator</RepositoryUrl>
+    <NeutralLanguage />
+    <Description>Paginator is a lib to help with pagination in projects the Idea is to be used heavily on the backend but as well be used on clients like blazor and xamarin</Description>
+    <Company>Nudes</Company>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Paginator.Core.csproj" />
     <ProjectReference Include="..\EfCore\Paginator.EfCore.csproj" />
     <ProjectReference Include="..\FluentValidation\Paginator.FluentValidation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
