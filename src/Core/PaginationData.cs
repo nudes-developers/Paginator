@@ -55,17 +55,14 @@ namespace Nudes.Paginator.Core
         public PaginationData(PageRequest request, long total)
         {
             Page = request.Page;
+            PageSize = request.PageSize;
             Field = request.Field;
             SortDirection = request.SortDirection;
             Total = total;
         }
 
-        public PaginationData(PageRequest request, long total, string field, SortDirection direction)
+        public PaginationData(PageRequest request, long total, string field, SortDirection direction) : this(request, total)
         {
-            Page = request.Page;
-            Field = request.Field;
-            SortDirection = request.SortDirection;
-            Total = total;
             Field = field;
             SortDirection = direction;
         }
