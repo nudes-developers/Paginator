@@ -21,4 +21,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Nudes.Retornator.Core" Version="1.0.487" />
+  </ItemGroup>
+
 </Project>

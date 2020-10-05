@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Nudes.Retornator.Core;
+using System.Collections.Generic;
 
 namespace Nudes.Paginator.Core
 {
@@ -6,7 +7,7 @@ namespace Nudes.Paginator.Core
     /// Base class to all paginated result
     /// </summary>
     /// <typeparam name="T">Type of paginated items</typeparam>
-    public class PageResult<T> where T : class
+    public class PageResult<T> : BaseResult<PageResult<T>> where T : class
     {
         /// <summary>
         /// Pagination information
