@@ -45,7 +45,7 @@ namespace Nudes.Paginator.Core
         /// <summary>
         /// If it is the last page
         /// </summary>
-        public bool IsLastPage => PageCount >= Page;
+        public bool IsLastPage => PageCount <= Page;
 
 
         public PaginationData()

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace>Nudes.Paginator.FluentValidation</RootNamespace>
     <AssemblyName>Nudes.Paginator.FluentValidation</AssemblyName>
     <Description>Paginator is a lib to help with pagination in projects the Idea is to be used heavily on the backend but as well be used on clients like blazor and xamarin</Description>

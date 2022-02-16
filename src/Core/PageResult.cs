@@ -7,7 +7,7 @@ namespace Nudes.Paginator.Core
     /// Base class to all paginated result
     /// </summary>
     /// <typeparam name="T">Type of paginated items</typeparam>
-    public class PageResult<T> : BaseResult<PageResult<T>> where T : class
+    public class PageResult<T> 
     {
         /// <summary>
         /// Pagination information
