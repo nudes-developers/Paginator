@@ -13,7 +13,6 @@ but you can also use its individual packages and configure to your specific need
 ```
 dotnet add package Nudes.Paginator.Core
 dotnet add package Nudes.Paginator.Validator
-dotnet add package Nudes.Paginator.EfCore
 ```
 
 
@@ -31,13 +30,17 @@ Return data will always follow the following contract
 ```json
 {
     "pagination" : {
-        "page": 1,
-        "pageSize": 25,
-        "field" : "fieldName",
-        "sortDirection": "ascending or descending",
-        "total": 100,
-        "pageCount": 4,
-        "isFirstPage": true,
+        "page": 13,
+        "pageSize": 40,
+        "sorting": [
+            {
+                "field": "property",
+                "sortDirection": 0
+            }
+        ],
+        "total": 5000,
+        "pageCount": 125,
+        "isFirstPage": false,
         "isLastPage": false
     },
     "items" : []
@@ -47,7 +50,7 @@ Return data will always follow the following contract
 The *in facto* pagination methods are extensions on top of `IQueryable<T>` hence can work on top of EFCore
 
 ```csharp
-PagedRequest request = GetPagedRequest();
+PageRequest request = GetPageRequest();
 IQueryable<T> data = GetData();
 
 var total = await data.CountAsync(); //required to calculate page data correctly
@@ -57,7 +60,7 @@ var items = await data.PaginateBy(request, d=> d.Field)
     .Select(d => MapToResult(d))
     .ToListAsync();
 
-PagedResult result = new PagedResult(request, total, items);
+return request.ToResult(items, total);
 ```
 ### FluentValidation
 This lib will be mostly used on server as well and is a default implementation of an validator of PagedRequest, you can use it directly or you can create your own and include it's validation
@@ -74,6 +77,13 @@ public class SpecificValidator : AbstractValidator<MyRequest>
     }
 }
 ```
+
+### Client side and sorting
+
+On the client side sorting information will be received through the query param `sorting`, this param is mapped to an array and should be passed as such: `?sorting[0].field=fieldName&sorting[0].sortDirection=ascending`
+being an array also means we can have a multi-field sorting.
+
+This lib also accepts complex property as a field name, just call separated through a '.' as you would on c# code `firstLevelProperty.secondLevelProperty.thirdLevelProperty`, just remember that these properties will be matched against the type you are invoking `.PaginateBy` so the clients would have access to your DTOs and should not know the real types you are storing on your database, so be sure to map/project to DTO before paginating
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
