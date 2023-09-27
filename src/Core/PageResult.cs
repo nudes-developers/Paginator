@@ -1,48 +1,70 @@
-﻿using Nudes.Retornator.Core;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
-namespace Nudes.Paginator.Core
+namespace Nudes.Paginator.Core;
+
+/// <summary>
+/// Base class to all paginated result
+/// </summary>
+/// <typeparam name="T">Type of paginated items</typeparam>
+public class PageResult<T> 
 {
     /// <summary>
-    /// Base class to all paginated result
+    /// Pagination information
     /// </summary>
-    /// <typeparam name="T">Type of paginated items</typeparam>
-    public class PageResult<T> 
+    public virtual PaginationData Pagination { get; set; }
+
+    /// <summary>
+    /// Items that are shown in the specified page
+    /// </summary>
+    public virtual IEnumerable<T> Items { get; set; }
+
+    /// <summary>
+    /// Creates a page result with empty items and default pagination data
+    /// </summary>
+    public PageResult()
     {
-        /// <summary>
-        /// Pagination information
-        /// </summary>
-        public virtual PaginationData Pagination { get; set; }
+        Pagination = new PaginationData();
+        Items = Enumerable.Empty<T>();
+    }
 
-        /// <summary>
-        /// Items that have been paginated
-        /// </summary>
-        public virtual ICollection<T> Items { get; set; }
+    /// <summary>
+    /// Creates a PageResult with the items specified
+    /// </summary>
+    /// <param name="items">items of the page</param>
+    public PageResult(IEnumerable<T> items)
+    {
+        Items = items;
+    }
 
-        public PageResult()
-        {
-            Pagination = new PaginationData();
-            Items = new List<T>();
-        }
+    /// <summary>
+    /// Creates a PageResult based on the pagination data, with empty items
+    /// </summary>
+    /// <param name="pagination">pagination data</param>
+    public PageResult(PaginationData pagination)
+    {
+        Pagination = pagination;
+        Items = Enumerable.Empty<T>();
+    }
 
-        public PageResult(IEnumerable<T> items)
-        {
-            Items = new List<T>(items);
-        }
+    /// <summary>
+    /// Creates a PageResult based on the pagination data and the items
+    /// </summary>
+    /// <param name="pagination">pagination data</param>
+    /// <param name="items">items of the page</param>
+    public PageResult(PaginationData pagination, IEnumerable<T> items) : this(pagination)
+    {
+        Items = items;
+    }
 
-        public PageResult(PaginationData pagination)
-        {
-            Pagination = pagination;
-        }
-
-        public PageResult(PaginationData pagination, IEnumerable<T> items) : this(pagination)
-        {
-            Items = new List<T>(items);
-        }
-
-        public PageResult(PageRequest request, long total, IEnumerable<T> items) : this(new PaginationData(request, total), items)
-        {
-            /*as is*/
-        }
+    /// <summary>
+    /// Creates a PageResult based on the pagination request, total items and the items
+    /// </summary>
+    /// <param name="request">pagination request</param>
+    /// <param name="total">total of items</param>
+    /// <param name="items">items of the page</param>
+    public PageResult(PageRequest request, long total, IEnumerable<T> items) : this(new PaginationData(request, total), items)
+    {
+        /* as is */
     }
 }
