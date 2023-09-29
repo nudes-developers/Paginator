@@ -9,8 +9,8 @@
 		<Company>Nudes</Company>
 		<LangVersion>11</LangVersion>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<PackageProjectUrl>https://github.com/nudes-senaisp/Paginator</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/nudes-senaisp/Paginator</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/nudes-developers/Paginator</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/nudes-developers/Paginator</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
