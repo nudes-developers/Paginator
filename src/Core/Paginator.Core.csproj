@@ -30,8 +30,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-		<PackageReference Include="Nudes.Retornator.Core" Version="1.0.605" />
+		<PackageReference Include="Nudes.Retornator.Core" Version="1.0.951" />
 	</ItemGroup>
 
 </Project>
