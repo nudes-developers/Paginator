@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
 
 trigger:
-- master
+- main
 
 pool:
   vmImage: 'windows-latest'
@@ -13,21 +13,14 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  sdkVersion: '3.1.100'
 
 steps:
-- task: UseDotNet@2
-  displayName: 'Install .Net Core 3.1 SDK'
-  inputs:
-    packageType: sdk
-    version: $(sdkVersion)
-
 - task: DotNetCoreCLI@2
   displayName: 'Build Solution'
   inputs:
     command: 'build'
     projects: src/**/*.csproj
-    arguments: '--configuration $(buildConfiguration) /p:Version=1.0.$(Build.BuildId) /p:AssemblyVersion=1.0.$(Build.BuildId)'
+    arguments: '--configuration $(buildConfiguration) /p:Version=2.0.$(Build.BuildId) /p:AssemblyVersion=2.0.$(Build.BuildId)'
     feedsToUse: 'select'
 
 - task: CopyFiles@2
