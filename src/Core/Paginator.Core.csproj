@@ -8,8 +8,8 @@
 		<Authors>Patrick Ens</Authors>
 		<Company>Nudes</Company>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<PackageProjectUrl>https://github.com/nudes-senaisp/Paginator</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/nudes-senaisp/Paginator</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/nudes-developers/Paginator</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/nudes-developers/Paginator</RepositoryUrl>
 		<Description>Paginator is a lib to help with pagination in projects the Idea is to be used heavily on the backend but as well be used on clients like blazor and xamarin</Description>
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
